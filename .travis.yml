@@ -23,3 +23,16 @@ after_success:
   - docker push dominic70/multi-nginx
   - docker push dominic70/multi-server
   - docker push dominic70/multi-worker 
+
+# http://multidocker-env-1.eba-e4bq76rs.eu-west-2.elasticbeanstalk.com/
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: multi-docker
+  env: Multidocker-env-1
+  bucket_name: elasticbeanstalk-eu-west-2-661394686668
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRETE_KEY
